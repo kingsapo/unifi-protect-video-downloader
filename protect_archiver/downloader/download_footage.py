@@ -23,7 +23,7 @@ def download_footage(client: Any, start: datetime, end: datetime, camera: Camera
     for interval_start, interval_end in calculate_intervals(start, end):
         # wait n seconds before starting next download (if parameter is set)
         if client.download_wait != 0 and client.files_downloaded == 0:
-            logging.debug(
+            logging.info(
                 "Command line argument '--wait-between-downloads' is set to"
                 f" {client.download_wait} second(s)... \n"
             )
