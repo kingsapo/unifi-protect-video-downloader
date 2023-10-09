@@ -80,6 +80,13 @@ from protect_archiver.utils import print_download_stats
     ),
 )
 @click.option(
+    "--wait-between-downloads",
+    "download_wait",
+    default=0,
+    show_default=True,
+    help="Time to wait between file downloads, in seconds",
+)
+@click.option(
     "--use-utc-filenames",
     is_flag=True,
     default=False,
@@ -98,6 +105,7 @@ def sync(
     ignore_state: bool,
     ignore_failed_downloads: bool,
     cameras: str,
+    download_wait: int,
     use_utc_filenames: bool,
 ) -> None:
     # normalize path to destination directory and check if it exists
@@ -116,6 +124,7 @@ def sync(
         destination_path=dest,
         ignore_failed_downloads=ignore_failed_downloads,
         use_subfolders=True,
+        download_wait=download_wait,
         use_utc_filenames=use_utc_filenames,
     )
 
