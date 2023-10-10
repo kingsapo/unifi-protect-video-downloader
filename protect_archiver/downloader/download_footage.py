@@ -25,7 +25,7 @@ def download_footage(client: Any, start: datetime, end: datetime, camera: Camera
         if client.download_wait != 0 and client.files_downloaded != 0:
             logging.info(
                 "Command line argument '--wait-between-downloads' is set to"
-                f" {client.download_wait} second(s)... \n"
+                f" {client.download_wait} second(s)..."
             )
             time.sleep(int(client.download_wait))
 
