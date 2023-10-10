@@ -27,6 +27,7 @@ class ProtectSync:
         return state
 
     def writestate(self, state: dict) -> None:
+        logging.info("writing state")
         with open(self.statefile, "w") as fp:
             json.dump(state, fp, default=json_encode)
 
@@ -57,6 +58,7 @@ class ProtectSync:
                         "last": interval_end,
                         "name": camera.name,
                     }
+                    self.writestate(state)
             except Exception:
                 logging.exception(
                     f"Failed to sync camera {camera.name} - continuing to next device"
