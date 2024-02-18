@@ -75,7 +75,9 @@ def test_download_footage(
     start = datetime(2020, 1, 8, 23, 0, 0, tzinfo=timezone.utc)
     end = datetime(2020, 1, 8, 23, 59, 0, tzinfo=timezone.utc)
 
-    Downloader.download_footage(client, start, end, sample_camera)
+    Downloader.download_footage(
+        client, start, end, sample_camera, disable_alignment=False, disable_splitting=False
+    )
 
     file_name = os.path.join(
         test_output_dest,
@@ -86,8 +88,7 @@ def test_download_footage(
 
     with open(file_name) as fp:
         assert (
-            fp.read()
-            == "12572d283469d8c82413787fd73e0c91456c49ea991b2d5bf5e9c87bc3633566"
+            fp.read() == "12572d283469d8c82413787fd73e0c91456c49ea991b2d5bf5e9c87bc3633566"
             "c8825185f86ab64ae748342f0030cf5dcabf49090a98d06c019024883d2bdd57"
             "35704f975f15344cbd0771597ceb50d1062402e64555157abcb3a362290aa818"
             "e1d02d3942f029bec370e7d12bd62bec347b373c66bccced3a1071fc69cef311"
