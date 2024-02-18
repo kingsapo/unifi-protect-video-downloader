@@ -83,7 +83,10 @@ def download_file(client: Any, query: str, filename: str) -> None:
                 except Exception:
                     data = None
 
-                error_message = data.get("error") or data or "(no information available)"
+                if data is None:
+                    error_message = "(no information available)"
+                else:
+                    error_message = data.get("error") or data
 
                 # TODO
                 logging.exception(
