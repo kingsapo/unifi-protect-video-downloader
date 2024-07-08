@@ -21,7 +21,7 @@ class Config:
     DISABLE_SPLITTING: bool = False
     DOWNLOAD_WAIT: int = 0
     DOWNLOAD_TIMEOUT: float = (
-        120.0  # aka read_timeout - time to wait until a socket read response happens
+        300.0  # aka read_timeout - time to wait until a socket read response happens
     )
     MAX_RETRIES: int = 3
     USE_UTC_FILENAMES: bool = False
